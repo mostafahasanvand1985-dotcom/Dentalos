@@ -7,8 +7,9 @@
 html,body{height:100%}
 html{scroll-behavior:smooth}
 body{
-  margin:0;background:radial-gradient(1200px 600px at 10% -20%,#103049 0,transparent 60%),
-  radial-gradient(900px 500px at 110% -10%,#1a3d57 0,transparent 55%),var(--bg);
+  margin:0;background:
+   radial-gradient(1200px 600px at 10% -20%,#103049 0,transparent 60%),
+   radial-gradient(900px 500px at 110% -10%,#1a3d57 0,transparent 55%),var(--bg);
   color:var(--txt);font:16px/1.6 ui-rounded,system-ui,Segoe UI;
 }
 
@@ -44,7 +45,6 @@ body{
   background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02))
 }
 
-/* Dock */
 .dock{
   position:sticky;bottom:0;display:flex;gap:12px;justify-content:center;
   padding:10px 16px;background:linear-gradient(0deg,rgba(0,0,0,.45),rgba(0,0,0,0));
