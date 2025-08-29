@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>DentalOS • SuperApp</title>
+
+  <!-- iOS/PWA meta -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="apple-touch-icon" href="assets/icon-192.png" />
+  <link rel="manifest" href="manifest.json" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- هدر تمام‌عرض با لوگو (شفاف) -->
+  <header id="hdr" class="lg-glass">
+    <div class="hdr-wrap">
+      <img id="appLogo" src="assets/logo.svg" alt="Dr. Mazandarani" />
+      <h1 class="brand">DentalOS</h1>
+    </div>
+    <div class="light-sweep"></div>
+  </header>
+
+  <!-- نوار تب‌ها / نقش و جستجو -->
+  <section class="topbar">
+    <div class="role-chip" id="roleChip">manager</div>
+    <button class="btn ghost" id="btnUpdate">مرکز بروزرسانی</button>
+    <input id="q" class="search" placeholder="جستجو…" />
+  </section>
+
+  <!-- داشبورد: کاشی‌های اصلی با رنگ‌های پالت لوگو -->
+  <main class="grid">
+    <button class="tile t-blue"   data-sec="appointments">نوبت‌ها</button>
+    <button class="tile t-cyan"   data-sec="patients">بیماران</button>
+    <button class="tile t-gold"   data-sec="finance">مالی</button>
+    <button class="tile t-pink"   data-sec="lab">لابراتوار</button>
+    <button class="tile t-lime"   data-sec="inventory">انبار</button>
+    <button class="tile t-slate"  data-sec="implant">ایمپلنت</button>
+    <button class="tile t-indigo" data-sec="doctors">پزشکان</button>
+    <button class="tile t-gray"   data-sec="settings">تنظیمات</button>
+  </main>
+
+  <!-- توست و باتم‌بار -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <nav class="bottombar">
+    <button data-sec="appointments">نوبت‌ها</button>
+    <button data-sec="patients">بیماران</button>
+    <button data-sec="finance">مالی</button>
+    <button data-sec="settings">تنظیمات</button>
+  </nav>
+
+  <script src="vendor/jalali.min.js"></script>
+  <script src="rbac.js"></script>
+  <script src="db.js"></script>
+  <script src="update-center.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
