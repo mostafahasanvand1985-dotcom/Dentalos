@@ -1,0 +1,78 @@
+@font-face { font-family: "IranSans"; src: local("SF Pro"); }
+:root{
+  --bg:#081c24; --fg:#eaf6ff; --muted:#9fb4c5;
+  /* پالت بر اساس لکه‌های پالت لوگو */
+  --blue:#2aa0ff; --cyan:#28d7ff; --gold:#ffb444;
+  --pink:#ff4fa0; --lime:#b7de25; --slate:#607d8b;
+  --indigo:#5b6cff; --gray:#3a4b57;
+  --glass: rgba(255,255,255,.06);
+  --ring: rgba(255,255,255,.12);
+  --shadow: 0 12px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font:15px/1.6 IranSans,system-ui, -apple-system;
+  background: radial-gradient(1400px 800px at 20% -50%, #163a4a 0,#0b2230 60%, #081c24 100%);
+  color:var(--fg);
+}
+
+/* Header */
+#hdr{position:relative;padding:14px 16px 10px}
+.lg-glass{
+  backdrop-filter: blur(16px) saturate(125%);
+  background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border-bottom: 1px solid var(--ring);
+}
+.hdr-wrap{display:flex;align-items:center;gap:14px;max-width:1100px;margin-inline:auto}
+#appLogo{height:42px; width:auto; object-fit:contain}
+.brand{margin:0;font-weight:700;letter-spacing:.6px}
+
+/* نور نرم */
+.light-sweep{
+  pointer-events:none;
+  position:absolute; inset:0; background:
+   radial-gradient(600px 120px at 0% 0%, rgba(255,255,255,.14), transparent 60%);
+  animation: sweep 6s linear infinite;
+}
+@keyframes sweep{
+  0%{background-position:-40% 0}
+  100%{background-position:140% 0}
+}
+
+/* Topbar */
+.topbar{display:flex;gap:10px;align-items:center; padding:12px 16px; max-width:1100px;margin:0 auto}
+.role-chip{padding:.35rem .7rem;border-radius:999px;background:var(--glass);border:1px solid var(--ring)}
+.search{flex:1; background:var(--glass);border:1px solid var(--ring);border-radius:12px;padding:.6rem .8rem;color:var(--fg)}
+.btn.ghost{background:transparent;border:1px solid var(--ring);color:var(--fg);padding:.55rem .9rem;border-radius:12px}
+
+/* Grid tiles */
+.grid{
+  display:grid; gap:16px;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  max-width:1100px; margin:16px auto; padding:0 16px;
+}
+.tile{
+  border:none; color:#fff; font-weight:700; letter-spacing:.3px;
+  padding:24px; border-radius:22px; text-align:center;
+  background:var(--glass); border:1px solid var(--ring);
+  box-shadow: var(--shadow);
+  transition: transform .12s ease, box-shadow .12s ease, filter .2s ease;
+}
+.tile:active{transform:scale(.98); filter:brightness(1.05)}
+.t-blue{background:linear-gradient(180deg,var(--blue),#0b74ff)}
+.t-cyan{background:linear-gradient(180deg,var(--cyan),#09b7e5)}
+.t-gold{background:linear-gradient(180deg,var(--gold),#f6a000)}
+.t-pink{background:linear-gradient(180deg,var(--pink),#e33185)}
+.t-lime{background:linear-gradient(180deg,var(--lime),#7fbf00); color:#08240d}
+.t-slate{background:linear-gradient(180deg,var(--slate),#4d616b)}
+.t-indigo{background:linear-gradient(180deg,var(--indigo),#3c4fff)}
+.t-gray{background:linear-gradient(180deg,var(--gray),#2d3b45)}
+
+/* Toast + bottom bar */
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:88px;min-width:220px;max-width:80%;
+  background:#111a;color:#fff;border:1px solid var(--ring);border-radius:14px;padding:.7rem .9rem;opacity:0;pointer-events:none;transition:.2s}
+.toast.show{opacity:1}
+.bottombar{position:sticky; bottom:0; display:flex; gap:12px; justify-content:space-around; padding:12px 16px;
+  background: rgba(8,28,36,.7); backdrop-filter: blur(12px); border-top:1px solid var(--ring)}
+.bottombar button{background:var(--glass); color:var(--fg); border:1px solid var(--ring); padding:.55rem .9rem;border-radius:12px}
