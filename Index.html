@@ -1,38 +1,39 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>DentalOS • SuperApp</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>DentalOS • V60</title>
 
-  <!-- iOS/PWA meta -->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <link rel="apple-touch-icon" href="assets/icon-192.png" />
-  <link rel="manifest" href="manifest.json" />
+  <!-- PWA / iOS -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#1095c1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- هدر تمام‌عرض با لوگو (شفاف) -->
+  <!-- هدر با لوگو افقی -->
   <header id="hdr" class="lg-glass">
     <div class="hdr-wrap">
-      <img id="appLogo" src="assets/logo.svg" alt="Dr. Mazandarani" />
+      <img id="appLogo" src="header-logo.png" alt="DentalOS">
       <h1 class="brand">DentalOS</h1>
     </div>
     <div class="light-sweep"></div>
   </header>
 
-  <!-- نوار تب‌ها / نقش و جستجو -->
+  <!-- تاپ‌بار -->
   <section class="topbar">
     <div class="role-chip" id="roleChip">manager</div>
     <button class="btn ghost" id="btnUpdate">مرکز بروزرسانی</button>
-    <input id="q" class="search" placeholder="جستجو…" />
+    <input id="q" class="search" placeholder="جستجو… (قفل کلیدواژه)">
   </section>
 
-  <!-- داشبورد: کاشی‌های اصلی با رنگ‌های پالت لوگو -->
+  <!-- داشبورد کاشی‌ها -->
   <main class="grid">
-    <button class="tile t-blue"   data-sec="appointments">نوبت‌ها</button>
+    <button class="tile t-blue"   data-sec="events">نوبت‌ها</button>
     <button class="tile t-cyan"   data-sec="patients">بیماران</button>
     <button class="tile t-gold"   data-sec="finance">مالی</button>
     <button class="tile t-pink"   data-sec="lab">لابراتوار</button>
@@ -42,19 +43,48 @@
     <button class="tile t-gray"   data-sec="settings">تنظیمات</button>
   </main>
 
-  <!-- توست و باتم‌بار -->
+  <!-- سکشن‌های قرارداد (Anchors ثابت) -->
+  <section id="sec-events"     class="panel dos-hidden"><h2>نوبت‌ها</h2></section>
+  <section id="sec-finance"    class="panel dos-hidden"><h2>مالی</h2></section>
+  <section id="sec-patients"   class="panel dos-hidden"><h2>بیماران</h2></section>
+  <section id="sec-lab"        class="panel dos-hidden"><h2>لابراتوار</h2></section>
+  <section id="sec-inventory"  class="panel dos-hidden"><h2>انبار</h2></section>
+  <section id="sec-implant"    class="panel dos-hidden"><h2>ایمپلنت</h2></section>
+  <section id="sec-doctors"    class="panel dos-hidden"><h2>پزشکان</h2></section>
+
+  <!-- تنظیمات (نمونه‌ی کلیدها + پاک‌سازی کش) -->
+  <section id="sec-settings"   class="panel dos-hidden">
+    <h2>تنظیمات</h2>
+    <div class="card">
+      <div class="muted">کانال آپدیت</div>
+      <div class="row">
+        <button class="btn" id="ch-stable">Stable</button>
+        <button class="btn" id="ch-beta">Beta</button>
+        <button class="btn" id="btnCheckUpd">بررسی نسخه</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="muted">رفع مشکل GitHub/کش</div>
+      <div class="row"><button id="btnClearCache" class="btn btn-gray">پاک‌سازی کش و Service Worker</button></div>
+      <div class="muted">اگر نسخه قدیمی می‌بینی، این را بزن سپس Refresh.</div>
+      <div class="row"><a class="btn ghost" href="health.html" target="_blank">Health Check</a></div>
+    </div>
+  </section>
+
+  <!-- Toast و باتم‌بار -->
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <nav class="bottombar">
-    <button data-sec="appointments">نوبت‌ها</button>
+    <button data-sec="events">نوبت‌ها</button>
     <button data-sec="patients">بیماران</button>
     <button data-sec="finance">مالی</button>
     <button data-sec="settings">تنظیمات</button>
   </nav>
 
-  <script src="vendor/jalali.min.js"></script>
-  <script src="rbac.js"></script>
-  <script src="db.js"></script>
-  <script src="update-center.js"></script>
-  <script src="app.js"></script>
+  <!-- اسکریپت‌ها -->
+  <script type="module" src="rbac.js"></script>
+  <script type="module" src="db.js"></script>
+  <script type="module" src="update-center.js"></script>
+  <script type="module" src="app.js"></script>
+  <script src="assets/js/extras/gh-fixes.js"></script>
 </body>
 </html>
