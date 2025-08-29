@@ -1,14 +1,12 @@
-// RBAC پایه
-const RBAC = {
-  role: localStorage.getItem('role') || 'manager', // manager | reception | doctor | assistant
-  can(route){
-    const map = {
-      manager  : ['*'],
-      reception: ['appointments','patients','update'],
-      doctor   : ['patients','appointments','implant','finance'],
-      assistant: ['appointments','patients']
-    };
-    const allow = map[this.role] || [];
-    return allow.includes('*') || allow.includes(route);
-  }
+const roles = {
+  manager: { patients:true, finance:true, lab:true, inventory:true, implants:true, doctors:true },
+  reception: { patients:true, appointments:true },
+  doctor: { patients:true, implants:true, finance:false },
+  assistant: { lab:true, inventory:true }
 };
+
+let currentRole = "manager";
+
+function can(role, section) {
+  return roles[role]?.[section] === true;
+}
