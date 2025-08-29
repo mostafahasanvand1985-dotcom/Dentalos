@@ -1,79 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>DentalOS</title>
-
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#0d6efd">
-  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDBCM0ZGIiB2aWV3Qm94PSIwIDAgMzIgMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIvPjx0ZXh0IHg9IjE2IiB5PSIyMSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZmZmIj5ET1M8L3RleHQ+PC9zdmc+" />
-
+  <meta charset="utf-8">
+  <title>DentalOS • V60</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <script src="app.js" defer></script>
+  <script src="db.js" defer></script>
+  <script src="rbac.js" defer></script>
+  <script src="update-center.js" defer></script>
 </head>
 <body>
-  <!-- هدر شفاف تمام‌عرض با لوگو -->
   <header class="hdr">
-    <div class="logo-wrap">
-      <!-- لوگوی شفاف (SVG) — نیازی به فایل خارجی نیست -->
-      <svg class="logo" viewBox="0 0 256 64" xmlns="http://www.w3.org/2000/svg" aria-label="Dr. Mazandarani">
-        <defs>
-          <linearGradient id="g" x1="0" x2="1">
-            <stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#8b5cf6"/>
-          </linearGradient>
-        </defs>
-        <circle cx="32" cy="32" r="24" fill="url(#g)" opacity="0.9"/>
-        <g fill="#fff" opacity="0.95">
-          <rect x="22" y="18" width="4" height="28" rx="2"/>
-          <rect x="30" y="14" width="4" height="32" rx="2"/>
-          <rect x="38" y="22" width="4" height="24" rx="2"/>
-        </g>
-        <text x="72" y="40" font-family="ui-rounded,system-ui,Segoe UI" font-size="22" fill="#e2e8f0">Dr. Mazandarani</text>
-      </svg>
-    </div>
+    <img src="logo-main.png" alt="DentalOS Logo" class="logo">
+    <h1>DentalOS</h1>
   </header>
-
-  <!-- بدنه -->
-  <main class="container">
-    <h1 class="title">DentalOS</h1>
-
-    <!-- کاشی‌های مدرن (نمونه) -->
-    <section class="grid">
-      <button class="tile" data-route="patients">بیماران</button>
-      <button class="tile" data-route="appointments">نوبت‌ها</button>
-      <button class="tile" data-route="inventory">انبار</button>
-      <button class="tile" data-route="finance">مالی</button>
-      <button class="tile" data-route="implant">ایمپلنت</button>
-      <button class="tile" data-route="doctors">پزشکان</button>
-      <button class="tile" data-route="settings">تنظیمات</button>
-      <button class="tile" data-route="update">مرکز بروزرسانی</button>
-    </section>
-
-    <!-- خروجی لاگ/سلامت -->
-    <section class="card">
-      <h3>Self-Test</h3>
-      <pre id="health">در حال بررسی…</pre>
-    </section>
-  </main>
-
-  <footer class="dock">
-    <button class="dock-btn" data-route="appointments">نوبت‌ها</button>
-    <button class="dock-btn" data-route="patients">بیماران</button>
-    <button class="dock-btn" data-route="finance">مالی</button>
-    <button class="dock-btn" data-route="settings">تنظیمات</button>
-  </footer>
-
-  <script src="rbac.js"></script>
-  <script src="db.js"></script>
-  <script src="app.js"></script>
-  <script src="update-center.js"></script>
-
-  <script>
-    // ثبت Service Worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js').catch(console.error);
-    }
-  </script>
+  <main id="app"></main>
 </body>
 </html>
