@@ -1,0 +1,17 @@
+<!doctype html><html lang="fa" dir="rtl"><meta charset="utf-8">
+<title>DentalOS — Health</title>
+<style>body{font-family:system-ui,-apple-system;background:#081c24;color:#eaf6ff;padding:20px} code{background:#0f2a36;padding:2px 6px;border-radius:6px}</style>
+<h1>Health Check</h1>
+<ul>
+  <li>URL: <code id="u"></code></li>
+  <li>Service Worker: <code id="sw"></code></li>
+  <li>Caches: <code id="ck"></code></li>
+</ul>
+<script>
+(async()=>{
+  u.textContent = location.href;
+  try{ sw.textContent = (await navigator.serviceWorker.getRegistration()) ? 'registered' : 'none'; }catch(e){ sw.textContent='n/a'; }
+  try{ ck.textContent = (await caches.keys()).join(', ') || 'empty'; }catch(e){ ck.textContent='n/a'; }
+})();
+</script>
+</html>
