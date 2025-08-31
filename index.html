@@ -2,25 +2,25 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>DentalOS ساده</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DentalOS 🦷</title>
   <style>
-    body { font-family: sans-serif; margin:0; padding:0; background:#f5f5f5; }
-    h1 { margin:20px; text-align:center; }
-    .tile-grid { display:grid; grid-template-columns:1fr 1fr; gap:15px; padding:20px; }
-    .tile { background:#fff; border-radius:20px; padding:40px 0; font-size:20px;
-            box-shadow:0 4px 20px rgba(0,0,0,0.1); text-align:center; cursor:pointer; }
+    body { font-family: sans-serif; margin:0; background:#f7f7f7; }
+    h1 { text-align:center; padding:20px; }
+    .tiles { display:grid; grid-template-columns:1fr 1fr; gap:15px; padding:20px; }
+    .tile { background:#fff; padding:40px 0; text-align:center;
+            border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,.1); cursor:pointer; }
     .sheet { display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-             background:#fff; z-index:100; overflow-y:auto; }
+             background:#fff; z-index:99; overflow-y:auto; }
     .sheet-header { display:flex; justify-content:space-between; padding:15px; background:#eee; }
-    .btn { padding:10px 20px; border-radius:10px; border:none; font-size:16px; cursor:pointer; }
+    .btn { padding:10px 20px; border-radius:8px; border:none; cursor:pointer; }
     .btn-close { background:#f44336; color:#fff; }
     .btn-back { background:#ffeb3b; }
   </style>
 </head>
 <body>
   <h1>DentalOS 🦷</h1>
-  <div class="tile-grid">
+  <div class="tiles">
     <div class="tile" onclick="openSheet('events')">نوبت‌ها 📅</div>
     <div class="tile" onclick="openSheet('finance')">مالی 💰</div>
     <div class="tile" onclick="openSheet('patients')">بیماران 👤</div>
@@ -31,7 +31,7 @@
     <div class="tile" onclick="openSheet('settings')">تنظیمات ⚙️</div>
   </div>
 
-  <!-- نمونه یک صفحه -->
+  <!-- Sheet نمونه -->
   <div id="sheet-events" class="sheet">
     <div class="sheet-header">
       <button class="btn btn-back" onclick="closeSheet('events')">برگشت</button>
@@ -40,17 +40,6 @@
     <h2 style="text-align:center">📅 نوبت‌ها</h2>
     <p style="text-align:center">اینجا تقویم/رویدادها نمایش داده می‌شوند...</p>
   </div>
-
-  <div id="sheet-finance" class="sheet">
-    <div class="sheet-header">
-      <button class="btn btn-back" onclick="closeSheet('finance')">برگشت</button>
-      <button class="btn btn-close" onclick="closeSheet('finance')">بستن</button>
-    </div>
-    <h2 style="text-align:center">💰 مالی</h2>
-    <p style="text-align:center">اینجا بخش مالی است...</p>
-  </div>
-
-  <!-- می‌تونی بقیه sheetها رو به همین سبک پر کنی -->
 
   <script>
     function openSheet(name) {
