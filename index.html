@@ -2,51 +2,109 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DentalOS 🦷</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DentalOS</title>
   <style>
-    body { font-family: sans-serif; margin:0; background:#f7f7f7; }
-    h1 { text-align:center; padding:20px; }
-    .tiles { display:grid; grid-template-columns:1fr 1fr; gap:15px; padding:20px; }
-    .tile { background:#fff; padding:40px 0; text-align:center;
-            border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,.1); cursor:pointer; }
-    .sheet { display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-             background:#fff; z-index:99; overflow-y:auto; }
-    .sheet-header { display:flex; justify-content:space-between; padding:15px; background:#eee; }
-    .btn { padding:10px 20px; border-radius:8px; border:none; cursor:pointer; }
-    .btn-close { background:#f44336; color:#fff; }
-    .btn-back { background:#ffeb3b; }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: linear-gradient(135deg,#ffdde1,#ee9ca7);
+      text-align: center;
+      color: #222;
+    }
+    h1 {
+      margin: 20px 0 10px;
+      font-size: 28px;
+    }
+    .search {
+      margin: 10px auto 20px;
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      width: 80%;
+      max-width: 400px;
+      text-align: right;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      width: 90%;
+      max-width: 500px;
+      margin: auto;
+    }
+    .tile {
+      background: rgba(255,255,255,0.6);
+      border-radius: 20px;
+      padding: 40px 0;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .tile:hover {
+      transform: scale(1.05);
+    }
+    .sheet {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: white;
+      z-index: 10;
+      padding: 20px;
+      text-align: right;
+    }
+    .sheet h2 {
+      margin-top: 0;
+    }
+    .btn-close {
+      background: red;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <h1>DentalOS 🦷</h1>
-  <div class="tiles">
-    <div class="tile" onclick="openSheet('events')">نوبت‌ها 📅</div>
-    <div class="tile" onclick="openSheet('finance')">مالی 💰</div>
-    <div class="tile" onclick="openSheet('patients')">بیماران 👤</div>
-    <div class="tile" onclick="openSheet('lab')">لابراتوار 🧪</div>
-    <div class="tile" onclick="openSheet('inventory')">انبار 📦</div>
-    <div class="tile" onclick="openSheet('implant')">ایمپلنت 🦷</div>
-    <div class="tile" onclick="openSheet('doctors')">پزشکان 👨‍⚕️</div>
-    <div class="tile" onclick="openSheet('settings')">تنظیمات ⚙️</div>
+  <input type="text" class="search" placeholder="جستجو در کل برنامه...">
+
+  <div class="grid">
+    <div class="tile" onclick="openSheet('finance')">💰 مالی</div>
+    <div class="tile" onclick="openSheet('events')">📅 نوبت‌ها</div>
+    <div class="tile" onclick="openSheet('patients')">👤 بیماران</div>
+    <div class="tile" onclick="openSheet('lab')">🧪 لابراتوار</div>
+    <div class="tile" onclick="openSheet('inventory')">📦 انبار</div>
+    <div class="tile" onclick="openSheet('implant')">🦷 ایمپلنت</div>
+    <div class="tile" onclick="openSheet('doctors')">👨‍⚕️ پزشکان</div>
+    <div class="tile" onclick="openSheet('settings')">⚙️ تنظیمات</div>
   </div>
 
-  <!-- Sheet نمونه -->
-  <div id="sheet-events" class="sheet">
-    <div class="sheet-header">
-      <button class="btn btn-back" onclick="closeSheet('events')">برگشت</button>
-      <button class="btn btn-close" onclick="closeSheet('events')">بستن</button>
-    </div>
-    <h2 style="text-align:center">📅 نوبت‌ها</h2>
-    <p style="text-align:center">اینجا تقویم/رویدادها نمایش داده می‌شوند...</p>
+  <!-- Sheets -->
+  <div id="sheet-finance" class="sheet">
+    <h2>📊 مالی</h2>
+    <p>اینجا بخش مالی نمایش داده می‌شود.</p>
+    <button class="btn-close" onclick="closeSheet('finance')">بستن</button>
   </div>
+  
+  <div id="sheet-events" class="sheet">
+    <h2>📅 نوبت‌ها</h2>
+    <p>اینجا تقویم شمسی قرار می‌گیرد.</p>
+    <button class="btn-close" onclick="closeSheet('events')">بستن</button>
+  </div>
+
+  <!-- بقیه بخش‌ها مشابه ... -->
 
   <script>
     function openSheet(name) {
-      document.getElementById("sheet-" + name).style.display = "block";
+      document.getElementById("sheet-"+name).style.display = "block";
     }
     function closeSheet(name) {
-      document.getElementById("sheet-" + name).style.display = "none";
+      document.getElementById("sheet-"+name).style.display = "none";
     }
   </script>
 </body>
