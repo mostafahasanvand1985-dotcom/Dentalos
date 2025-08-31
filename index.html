@@ -3,16 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>DentalOS v11.1.0</title>
-
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#000000">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="DentalOS">
-  <link rel="apple-touch-icon" href="icon.png">
-
+  <title>DentalOS ساده</title>
   <style>
     body { font-family: sans-serif; margin:0; padding:0; background:#f5f5f5; }
     h1 { margin:20px; text-align:center; }
@@ -25,14 +16,10 @@
     .btn { padding:10px 20px; border-radius:10px; border:none; font-size:16px; cursor:pointer; }
     .btn-close { background:#f44336; color:#fff; }
     .btn-back { background:#ffeb3b; }
-    label { display:block; margin:10px; }
-    input, select, textarea { width:90%; padding:8px; margin:5px; border-radius:8px; border:1px solid #ccc; }
-    table { border-collapse: collapse; width:95%; margin:10px auto; }
-    th, td { border:1px solid #aaa; padding:8px; text-align:center; }
   </style>
 </head>
 <body>
-  <h1>DentalOS 🦷 v11.1.0</h1>
+  <h1>DentalOS 🦷</h1>
   <div class="tile-grid">
     <div class="tile" onclick="openSheet('events')">نوبت‌ها 📅</div>
     <div class="tile" onclick="openSheet('finance')">مالی 💰</div>
@@ -44,54 +31,33 @@
     <div class="tile" onclick="openSheet('settings')">تنظیمات ⚙️</div>
   </div>
 
-  <!-- Patients -->
-  <div id="sheet-patients" class="sheet">
+  <!-- نمونه یک صفحه -->
+  <div id="sheet-events" class="sheet">
     <div class="sheet-header">
-      <button class="btn btn-back" onclick="closeSheet('patients')">برگشت</button>
-      <button class="btn btn-close" onclick="closeSheet('patients')">بستن</button>
+      <button class="btn btn-back" onclick="closeSheet('events')">برگشت</button>
+      <button class="btn btn-close" onclick="closeSheet('events')">بستن</button>
     </div>
-    <h2 style="text-align:center">👤 بیماران</h2>
-    <form style="padding:15px">
-      <label>شماره پرونده: <input type="text" id="patientId" readonly></label>
-      <label>نام و نام خانوادگی: <input type="text"></label>
-      <label>کد ملی: <input type="text"></label>
-      <label>شماره تماس: <input type="text"></label>
-      <label>پزشک معالج:
-        <select>
-          <option>دکتر مینا</option>
-          <option>دکتر مهدی</option>
-        </select>
-      </label>
-      <label>لابراتوار:
-        <select>
-          <option>—</option>
-          <option>ناژداکی (ثابت)</option>
-          <option>هژبری (متحرک)</option>
-          <option>افزودن دستی…</option>
-        </select>
-      </label>
-      <label>پلن درمان: <textarea></textarea></label>
-      <p>💰 جمع هزینه: <span id="patientCost">0</span> تومان</p>
-      <button type="button" class="btn btn-close">ثبت بیمار</button>
-    </form>
+    <h2 style="text-align:center">📅 نوبت‌ها</h2>
+    <p style="text-align:center">اینجا تقویم/رویدادها نمایش داده می‌شوند...</p>
   </div>
 
-  <!-- سایر صفحات هم مثل نسخه v11.1.0 پر هستند (تقویم، مالی، لابراتوار، انبار، ایمپلنت، پزشکان، تنظیمات) -->
+  <div id="sheet-finance" class="sheet">
+    <div class="sheet-header">
+      <button class="btn btn-back" onclick="closeSheet('finance')">برگشت</button>
+      <button class="btn btn-close" onclick="closeSheet('finance')">بستن</button>
+    </div>
+    <h2 style="text-align:center">💰 مالی</h2>
+    <p style="text-align:center">اینجا بخش مالی است...</p>
+  </div>
+
+  <!-- می‌تونی بقیه sheetها رو به همین سبک پر کنی -->
 
   <script>
     function openSheet(name) {
       document.getElementById("sheet-" + name).style.display = "block";
-      if(name==='patients'){
-        document.getElementById("patientId").value = "P-" + Date.now();
-      }
     }
     function closeSheet(name) {
       document.getElementById("sheet-" + name).style.display = "none";
-    }
-
-    // رجیستر سرویس‌ورکر
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js");
     }
   </script>
 </body>
