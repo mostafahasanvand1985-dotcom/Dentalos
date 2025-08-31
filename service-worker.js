@@ -1,13 +1,19 @@
-self.addEventListener("install", e => {
-  e.waitUntil(
-    caches.open("dentalos-v1").then(cache => {
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open("dentalos-cache").then(cache => {
       return cache.addAll([
-        "index.html","styles.css","app.js","db.js",
-        "rbac.js","update-center.js","manifest.json","logo-main.png"
+        "./DentalOS_FINAL_UNIFIED.html",
+        "./manifest.json",
+        "./icon.png"
       ]);
     })
   );
 });
-self.addEventListener("fetch", e => {
-  e.respondWith(caches.match(e.request).then(r => r || fetch(e.request)));
+
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
+    })
+  );
 });
